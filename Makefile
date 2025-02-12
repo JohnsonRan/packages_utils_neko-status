@@ -4,9 +4,10 @@ PKG_NAME:=neko-status
 PKG_VERSION:=0.1
 PKG_RELEASE:=1
 
-PKG_SOURCE:=main.tar.gz
-PKG_SOURCE_URL:=https://github.com/JohnsonRan/neko-status/archive
-PKG_HASH:=32e8e4d63f77d71a200cb976bc654bd9a966e81a058f6f62b45da394cd897094
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/JohnsonRan/neko-status.git
+PKG_SOURCE_VERSION:=f1ac09848211157f5990a82ca55f1bbeafc6db73
+PKG_MIRROR_HASH:=2486f4d6d2fd452cf05da45b28562da67ab264aedb4b7925c3524a24db7eaaff
 
 PKG_MAINTAINER:=JohnsonRan <me@ihtw.moe>
 PKG_LICENSE:=MIT

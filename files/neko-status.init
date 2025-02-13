@@ -2,11 +2,12 @@
 
 START=99
 USE_PROCD=1
-PROG=/usr/bin/neko-status -c /etc/neko-status/config.yaml
+PROG=/usr/bin/neko-status
+CONFFILE=/etc/neko-status/config.yaml
 
 start_service() {
 	procd_open_instance
-	procd_set_param command $PROG
+	procd_set_param command $PROG -c $CONFFILE
 	procd_set_param respawn
 	procd_set_param stdout 1
 	procd_set_param stderr 1

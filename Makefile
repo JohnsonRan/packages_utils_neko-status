@@ -7,7 +7,7 @@ PKG_RELEASE:=1
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/JohnsonRan/neko-status.git
 PKG_SOURCE_VERSION:=ea0b95a308866f8fbf4e0638a2fa3e64bc204090
-PKG_MIRROR_HASH:=2ee9bafab0664cf8f380db996ccf64182512c43da585a93f76039fd70bee1c34
+PKG_MIRROR_HASH:=7006e0efa85eb6d81540856ff40c7e74e955778971aaa4ab2845789b538a41bf
 
 PKG_MAINTAINER:=JohnsonRan <me@ihtw.moe>
 PKG_LICENSE:=MIT
@@ -38,26 +38,17 @@ define Package/neko-status/description
 endef
 
 define Package/neko-status/conffiles
-/etc/neko-status/config.yaml
+/etc/neko-status
 endef
 
 define Package/neko-status/install
 	$(call GoPackage/Package/Install/Bin,$(1))
-	
+
 	$(INSTALL_DIR) $(1)/etc/neko-status
 	$(INSTALL_CONF) $(CURDIR)/files/config.yaml $(1)/etc/neko-status
-	
+
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) $(CURDIR)/files/neko-status.init $(1)/etc/init.d/neko-status
-endef
-
-define Package/neko-status/postrm
-#!/bin/sh
-if [ -z $${IPKG_INSTROOT} ]; then
-	service neko-status stop > /dev/null 2>&1
-	rm /etc/init.d/neko-status > /dev/null 2>&1
-	EOF
-fi
 endef
 
 define Build/Prepare
